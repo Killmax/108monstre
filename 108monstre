@@ -1,0 +1,58 @@
+#!/bin/python
+# -*- coding: utf-8 -*-
+
+from __future__ import division
+from scipy import *
+from pylab import *
+import sys
+
+def usage():
+    print "USAGE : ./108monstre a (a <= 2) nmax (int)"
+    sys.exit()
+
+def get_value(size, k):
+    n = 10
+    i = 1
+    x = []
+    x.append(n)
+    while (i < size):
+        n = k * n * ((1000 - n) / 1000)
+        x.append(n)
+        i += 1
+    return (x)
+
+def func_i(imin,imax):
+    x = []
+    y = []
+    k = 1
+    while (k <= 4):
+        values = get_value(imax, k)
+        y += values[imin - 1:]
+        for i in range (imax - imin + 1):
+            x.append(k)
+        k += 0.01
+    plot(x, y, color = 'blue', lw=2, ls='*', marker='o', markersize=1, markerfacecolor="blue", markeredgecolor="blue")
+    ylabel(ur"$x$", fontsize=20)
+
+if (len(sys.argv) != 3):
+    usage()
+elif (len(sys.argv) == 3):
+    try:
+        a = float(sys.argv[1])
+    except:
+        print "Please enter a number"
+        usage()
+    if (a < 2):
+        print "ERROR : a < 2"
+        usage()
+    try:
+        nmax = int(sys.argv[2])
+    except:
+        print "Please enter a number"
+        usage()
+    func_i(float(a), int(nmax))
+
+fig = gcf()
+fig.canvas.set_window_title('MONSTERRRRR HOW SHOULD IIII HEAR')
+title(u"108monstre", fontsize=16)
+show()
