@@ -8,7 +8,7 @@ from scipy import *
 import math
 
 def usage():
-    print "USAGE : ./108monstre a (a <= 2) nmax (int)"
+    print "USAGE : ./108monstre a (a >= 2) nmax (int)"
     sys.exit()
 
 def frange(start, stop, step):
@@ -21,7 +21,11 @@ def calc_x(a, kmax, x):
     k = 0
     n = 0
     while (k <= kmax):
-        n += cos(a**k * pi * x) / 2**k
+        try:
+            n += cos(a**k * pi * x) / 2**k
+        except OverflowError:
+            print "Overflow reached, prog is quitting"
+            sys.exit(1)
         k += 1
     return n
 
