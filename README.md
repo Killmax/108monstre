@@ -5,5 +5,3 @@ L’axe des ordonnées sera adapté à la courbe.
 La somme comportant un nombre infini de termes, il est impossible de tous les calculer
 ; on se limitera donc aux termes entre 0 et nmax (inclus).
 Votre logiciel prendra donc 2 arguments : a et nmax.
-
-CF PDF
